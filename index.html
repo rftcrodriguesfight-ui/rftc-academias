@@ -620,4 +620,89 @@ alert("Aluno cadastrado!");
 
 function atualizarAlunos(){
 
-document.getElementById("
+document.getElementById("document.getElementById("listaAlunos").innerHTML = "";
+
+if(alunos.length === 0){
+  document.getElementById("listaAlunos").innerHTML =
+    "<p style='color:#777;margin-top:15px;'>Nenhum aluno cadastrado.</p>";
+  return;
+}
+
+alunos.forEach((aluno,index)=>{
+
+  document.getElementById("listaAlunos").innerHTML += `
+    <div class="student">
+      <div>
+        <strong>${aluno.nome}</strong><br>
+        <small style="color:#aaa">${aluno.modalidade}</small>
+      </div>
+
+      <span class="badge">${aluno.status}</span>
+
+      <button class="btn btn-dark"
+        onclick="excluirAluno(${index})">
+        Excluir
+      </button>
+    </div>
+  `;
+});
+
+}
+
+function excluirAluno(index){
+
+if(confirm("Deseja excluir este aluno?")){
+
+alunos.splice(index,1);
+
+localStorage.setItem(
+  "rftc_alunos",
+  JSON.stringify(alunos)
+);
+
+atualizarAlunos();
+
+}
+
+}
+
+function mostrarSecao(secao){
+
+document.getElementById("alunos").classList.add("hidden");
+document.getElementById("mensalidadesSecao").classList.add("hidden");
+document.getElementById("checkin").classList.add("hidden");
+
+if(secao === "alunos"){
+  document.getElementById("alunos").classList.remove("hidden");
+}
+
+if(secao === "mensalidades"){
+  document.getElementById("mensalidadesSecao").classList.remove("hidden");
+}
+
+if(secao === "checkin"){
+  document.getElementById("checkin").classList.remove("hidden");
+}
+
+}
+
+function registrarCheckin(){
+
+let atual = Number(
+  localStorage.getItem("rftc_checkins") || 0
+);
+
+atual++;
+
+localStorage.setItem("rftc_checkins",atual);
+
+document.getElementById("checkins").innerText = atual;
+
+alert("Check-in registrado!");
+
+}
+
+</script>
+
+</body>
+</html>
