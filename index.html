@@ -1,139 +1,623 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RFTC Academias</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFTC Academias</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    body {
-      background: #0b0b0b;
-      color: white;
-      min-height: 100vh;
-    }
+body{
+  background:#080808;
+  color:#fff;
+  min-height:100vh;
+}
 
-    .container {
-      width: 100%;
-      max-width: 480px;
-      margin: auto;
-      padding: 25px 20px;
-    }
+.gold{
+  color:#d4af37;
+}
 
-    .logo {
-      text-align: center;
-      margin-top: 35px;
-      margin-bottom: 40px;
-    }
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
 
-    .logo h1 {
-      font-size: 38px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 0 30px;
+}
 
-    .logo span {
-      color: #d4af37;
-    }
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
 
-    .logo p {
-      margin-top: 8px;
-      color: #aaa;
-      font-size: 14px;
-      letter-spacing: 2px;
-    }
+.logo span{
+  color:#d4af37;
+}
 
-    .card {
-      background: #171717;
-      border: 1px solid #292929;
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 18px;
-    }
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:14px 20px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:15px;
+}
 
-    .card h2 {
-      margin-bottom: 10px;
-      font-size: 23px;
-    }
+.btn-gold{
+  background:#d4af37;
+  color:#000;
+}
 
-    .card p {
-      color: #aaa;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
+.btn-dark{
+  background:#181818;
+  color:#fff;
+  border:1px solid #333;
+}
 
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: #d4af37;
-      color: #000;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-    }
+.hero{
+  text-align:center;
+  padding:70px 10px;
+}
 
-    .btn-secundario {
-      background: transparent;
-      border: 1px solid #d4af37;
-      color: #d4af37;
-      margin-top: 12px;
-    }
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-    .recursos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+.hero h2{
+  color:#d4af37;
+  font-size:20px;
+  margin-bottom:20px;
+}
 
-    .recurso {
-      background: #171717;
-      border: 1px solid #292929;
-      border-radius: 14px;
-      padding: 18px 12px;
-      text-align: center;
-    }
+.hero p{
+  color:#bbb;
+  font-size:17px;
+  max-width:600px;
+  margin:0 auto 30px;
+  line-height:1.6;
+}
 
-    .recurso strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #d4af37;
-    }
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
 
-    .recurso small {
-      color: #999;
-    }
+.card{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:15px;
+  padding:25px;
+  margin-top:20px;
+}
 
-    footer {
-      text-align: center;
-      color: #666;
-      font-size: 12px;
-      margin-top: 35px;
-      padding-bottom: 20px;
-    }
-  </style>
+.hidden{
+  display:none!important;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  margin:8px 0 15px;
+  background:#181818;
+  border:1px solid #333;
+  border-radius:9px;
+  color:white;
+  font-size:16px;
+}
+
+label{
+  color:#ccc;
+  font-size:14px;
+}
+
+.form-title{
+  margin-bottom:20px;
+  font-size:25px;
+}
+
+.dashboard{
+  padding-bottom:50px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.stat{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:14px;
+  padding:20px;
+}
+
+.stat strong{
+  display:block;
+  font-size:30px;
+  color:#d4af37;
+  margin-top:8px;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+  margin-top:25px;
+}
+
+.menu button{
+  padding:18px 10px;
+  background:#151515;
+  color:white;
+  border:1px solid #333;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.menu button:hover{
+  border-color:#d4af37;
+}
+
+.section{
+  margin-top:25px;
+}
+
+.student{
+  background:#181818;
+  border:1px solid #292929;
+  border-radius:10px;
+  padding:15px;
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.badge{
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:12px;
+  background:#333;
+}
+
+footer{
+  text-align:center;
+  color:#777;
+  padding:40px 10px;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:34px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="container">
+<div class="container">
 
-    <section class="logo">
-      <h1>RFTC <span>ACADEMIAS</span></h1>
-      <p>GESTÃO INTELIGENTE PARA ACADEMIAS DE LUTAS</p>
-    </section>
+<header>
+  <div class="logo">
+    RFTC <span>ACADEMIAS</span>
+  </div>
+</header>
 
-    <section class="card">
-      <h2>Gerencie sua academia</h2>
+<!-- INÍCIO -->
+<section id="inicio">
 
-      <p>
-        Cadastre seus alunos, controle mensalidades
+<div class="hero">
+
+<h1>Gestão inteligente para<br>
+<span class="gold">academias de lutas</span></h1>
+
+<p>
+Gerencie alunos, mensalidades, presença e sua academia
+em um único sistema.
+</p>
+
+<div class="buttons">
+<button class="btn btn-gold" onclick="mostrar('cadastro')">
+CADASTRAR ACADEMIA
+</button>
+
+<button class="btn btn-dark" onclick="mostrar('login')">
+ENTRAR
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LOGIN -->
+<section id="login" class="hidden">
+
+<div class="card">
+
+<h2 class="form-title">Entrar na plataforma</h2>
+
+<label>E-mail</label>
+<input id="loginEmail" type="email" placeholder="seu@email.com">
+
+<label>Senha</label>
+<input id="loginSenha" type="password" placeholder="Sua senha">
+
+<button class="btn btn-gold" onclick="entrar()">
+ENTRAR
+</button>
+
+<br><br>
+
+<button class="btn btn-dark" onclick="mostrar('inicio')">
+VOLTAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CADASTRO -->
+<section id="cadastro" class="hidden">
+
+<div class="card">
+
+<h2 class="form-title">Cadastrar academia</h2>
+
+<label>Nome da academia</label>
+<input id="academia" placeholder="Ex.: RFTC Fight Center">
+
+<label>Responsável</label>
+<input id="responsavel" placeholder="Nome do responsável">
+
+<label>WhatsApp</label>
+<input id="telefone" placeholder="(51) 99999-9999">
+
+<label>E-mail</label>
+<input id="email" type="email" placeholder="academia@email.com">
+
+<label>Senha</label>
+<input id="senha" type="password" placeholder="Crie uma senha">
+
+<button class="btn btn-gold" onclick="cadastrar()">
+CRIAR MINHA ACADEMIA
+</button>
+
+<br><br>
+
+<button class="btn btn-dark" onclick="mostrar('inicio')">
+VOLTAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="hidden dashboard">
+
+<div class="topbar">
+
+<div>
+<h1>Dashboard</h1>
+<p id="nomeAcademia" class="gold"></p>
+</div>
+
+<button class="btn btn-dark" onclick="sair()">
+SAIR
+</button>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+Alunos
+<strong id="totalAlunos">0</strong>
+</div>
+
+<div class="stat">
+Mensalidades
+<strong id="mensalidades">0</strong>
+</div>
+
+<div class="stat">
+Check-ins hoje
+<strong id="checkins">0</strong>
+</div>
+
+<div class="stat">
+Modalidades
+<strong>0</strong>
+</div>
+
+</div>
+
+
+<div class="menu">
+
+<button onclick="mostrarSecao('alunos')">
+👥<br>ALUNOS
+</button>
+
+<button onclick="mostrarSecao('mensalidades')">
+💰<br>MENSALIDADES
+</button>
+
+<button onclick="mostrarSecao('checkin')">
+✅<br>CHECK-IN
+</button>
+
+<button onclick="alert('Módulo de modalidades será ativado na próxima etapa.')">
+🥊<br>MODALIDADES
+</button>
+
+<button onclick="alert('Relatórios serão adicionados na próxima etapa.')">
+📊<br>RELATÓRIOS
+</button>
+
+<button onclick="alert('Configurações serão adicionadas na próxima etapa.')">
+⚙️<br>CONFIGURAÇÕES
+</button>
+
+</div>
+
+
+<!-- ALUNOS -->
+
+<div id="alunos" class="section hidden">
+
+<div class="card">
+
+<h2>Cadastro de aluno</h2>
+
+<label>Nome do aluno</label>
+<input id="novoAluno" placeholder="Nome completo">
+
+<label>Modalidade</label>
+<select id="modalidade">
+<option>Muay Thai</option>
+<option>Boxe</option>
+<option>Jiu-Jitsu</option>
+<option>MMA</option>
+<option>Corrida</option>
+<option>Musculação</option>
+</select>
+
+<button class="btn btn-gold" onclick="adicionarAluno()">
+CADASTRAR ALUNO
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Alunos cadastrados</h2>
+
+<div id="listaAlunos"></div>
+
+</div>
+
+</div>
+
+
+<!-- MENSALIDADES -->
+
+<div id="mensalidadesSecao" class="section hidden">
+
+<div class="card">
+
+<h2>Controle de mensalidades</h2>
+
+<p style="color:#aaa;margin-top:10px;">
+Aqui ficará o controle de mensalidades dos alunos,
+vencimentos e pagamentos.
+</p>
+
+<br>
+
+<button class="btn btn-gold"
+onclick="alert('Sistema de cobrança será conectado na próxima etapa.')">
+CONFIGURAR COBRANÇAS
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CHECK-IN -->
+
+<div id="checkin" class="section hidden">
+
+<div class="card">
+
+<h2>Check-in</h2>
+
+<p style="color:#aaa;margin:10px 0 20px;">
+Registre a presença dos seus alunos.
+</p>
+
+<button class="btn btn-gold" onclick="registrarCheckin()">
+REGISTRAR CHECK-IN
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+RFTC Academias © 2026<br>
+Gestão inteligente para academias de lutas
+</footer>
+
+</div>
+
+
+<script>
+
+let alunos = JSON.parse(localStorage.getItem("rftc_alunos") || "[]");
+
+function mostrar(tela){
+
+document.getElementById("inicio").classList.add("hidden");
+document.getElementById("login").classList.add("hidden");
+document.getElementById("cadastro").classList.add("hidden");
+
+document.getElementById(tela).classList.remove("hidden");
+
+window.scrollTo(0,0);
+}
+
+
+function cadastrar(){
+
+let academia=document.getElementById("academia").value;
+let responsavel=document.getElementById("responsavel").value;
+let telefone=document.getElementById("telefone").value;
+let email=document.getElementById("email").value;
+let senha=document.getElementById("senha").value;
+
+if(!academia || !responsavel || !email || !senha){
+
+alert("Preencha os campos obrigatórios.");
+
+return;
+}
+
+let dados={
+academia,
+responsavel,
+telefone,
+email,
+senha
+};
+
+localStorage.setItem("rftc_academia",JSON.stringify(dados));
+
+alert("Academia cadastrada com sucesso!");
+
+abrirDashboard();
+
+}
+
+
+function entrar(){
+
+let email=document.getElementById("loginEmail").value;
+let senha=document.getElementById("loginSenha").value;
+
+let dados=JSON.parse(localStorage.getItem("rftc_academia"));
+
+if(!dados){
+
+alert("Nenhuma academia cadastrada neste navegador.");
+
+return;
+}
+
+if(email===dados.email && senha===dados.senha){
+
+abrirDashboard();
+
+}else{
+
+alert("E-mail ou senha incorretos.");
+
+}
+
+}
+
+
+function abrirDashboard(){
+
+let dados=JSON.parse(localStorage.getItem("rftc_academia"));
+
+document.getElementById("inicio").classList.add("hidden");
+document.getElementById("login").classList.add("hidden");
+document.getElementById("cadastro").classList.add("hidden");
+
+document.getElementById("dashboard").classList.remove("hidden");
+
+document.getElementById("nomeAcademia").innerText=dados.academia;
+
+atualizarAlunos();
+
+}
+
+
+function sair(){
+
+document.getElementById("dashboard").classList.add("hidden");
+
+mostrar("inicio");
+
+}
+
+
+function adicionarAluno(){
+
+let nome=document.getElementById("novoAluno").value;
+let modalidade=document.getElementById("modalidade").value;
+
+if(!nome){
+
+alert("Digite o nome do aluno.");
+
+return;
+}
+
+alunos.push({
+nome:nome,
+modalidade:modalidade,
+status:"Ativo"
+});
+
+localStorage.setItem("rftc_alunos",JSON.stringify(alunos));
+
+document.getElementById("novoAluno").value="";
+
+atualizarAlunos();
+
+alert("Aluno cadastrado!");
+
+}
+
+
+function atualizarAlunos(){
+
+document.getElementById("
