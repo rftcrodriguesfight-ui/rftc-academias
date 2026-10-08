@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFTC - Rodrigues Fight Training Center</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: white;
+    }
+
+    header {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #d71920;
+    }
+
+    header h1 {
+      color: #d71920;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 5px;
+      color: #ccc;
+    }
+
+    .hero {
+      padding: 50px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #111, #1d1d1d);
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .hero span {
+      color: #d71920;
+    }
+
+    .hero p {
+      color: #ccc;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      margin: 5px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-red {
+      background: #d71920;
+      color: white;
+    }
+
+    .btn-dark {
+      border: 1px solid #d71920;
+      color: white;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #171717;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #d71920;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .login {
+      background: #111;
+      text-align: center;
+    }
+
+    .login-box {
+      max-width: 450px;
+      margin: auto;
+      background: #191919;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      background: #d71920;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #080808;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>RFTC</h1>
+  <p>Rodrigues Fight Training Center</p>
+</header>
+
+<div class="hero">
+  <h2>Gestão inteligente para <span>academias de luta</span></h2>
+
+  <p>
+    Cadastre sua academia, gerencie alunos, controle pagamentos,
+    presença e organize sua equipe em um único sistema.
+  </p>
+
+  <div class="buttons">
+    <a href="#login" class="btn btn-red">ENTRAR NO SISTEMA</a>
+    <a href="#recursos" class="btn btn-dark">CONHECER O SISTEMA</a>
+  </div>
+</div>
+
+<section id="recursos">
+  <h2>Recursos do RFTC</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>🏢 Academia</h3>
+      <p>
+        Cadastre sua academia e tenha seu próprio ambiente de gestão.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🥊 Alunos</h3>
+      <p>
+        Cadastre alunos, graduação, modalidade e informações de treinamento.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>💰 Pagamentos</h3>
+      <p>
+        Organize mensalidades, planos e controle financeiro dos alunos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>✅ Check-in</h3>
+      <p>
+        Controle a presença dos alunos nos treinamentos.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Modalidades</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Muay Thai</h3>
+      <p>Gestão de alunos e graduação.</p>
+    </div>
+
+    <div class="card">
+      <h3>Boxe</h3>
+      <p>Organização da equipe e alunos.</p>
+    </div>
+
+    <div class="card">
+      <h3>Corrida</h3>
+      <p>Controle de alunos e treinamentos.</p>
+    </div>
+
+    <div class="card">
+      <h3>Outras lutas</h3>
+      <p>Estrutura preparada para diferentes modalidades.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="login" class="login">
+
+  <h2>Acesso ao sistema</h2>
+
+  <div class="login-box">
+
+    <input type="email" placeholder="E-mail">
+
+    <input type="password" placeholder="Senha">
+
+    <button onclick="entrar()">ENTRAR</button>
+
+    <p id="mensagem" style="margin-top:15px;color:#aaa;"></p>
+
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 RFTC - Rodrigues Fight Training Center</p>
+  <p style="margin-top:8px;">Sistema para gestão de academias de luta</p>
+</footer>
+
+<script>
+  function entrar() {
+    document.getElementById("mensagem").innerText =
+      "Área de login em desenvolvimento. Estamos construindo o sistema RFTC.";
+  }
+</script>
+
+</body>
+</html>
