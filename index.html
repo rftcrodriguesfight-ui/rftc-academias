@@ -1,275 +1,395 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RFTC - Rodrigues Fight Training Center</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>RFTC - Sistema de Gestão</title>
 
-    body {
-      background: #0b0b0b;
-      color: white;
-    }
+<style>
 
-    header {
-      background: #111;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #d71920;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
 
-    header h1 {
-      color: #d71920;
-      font-size: 28px;
-    }
+body{
+  background:#080808;
+  color:white;
+  min-height:100vh;
+}
 
-    header p {
-      margin-top: 5px;
-      color: #ccc;
-    }
+header{
+  background:#101010;
+  padding:25px 20px;
+  text-align:center;
+  border-bottom:2px solid #e50914;
+}
 
-    .hero {
-      padding: 50px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #111, #1d1d1d);
-    }
+.logo{
+  font-size:38px;
+  font-weight:900;
+  color:#e50914;
+  letter-spacing:2px;
+}
 
-    .hero h2 {
-      font-size: 34px;
-      margin-bottom: 15px;
-    }
+.subtitle{
+  color:#ccc;
+  margin-top:5px;
+  font-size:16px;
+}
 
-    .hero span {
-      color: #d71920;
-    }
+.hero{
+  padding:45px 20px 30px;
+  text-align:center;
+}
 
-    .hero p {
-      color: #ccc;
-      max-width: 600px;
-      margin: auto;
-      line-height: 1.6;
-    }
+.hero h1{
+  font-size:32px;
+  line-height:1.15;
+  margin-bottom:15px;
+}
 
-    .buttons {
-      margin-top: 30px;
-    }
+.hero h1 span{
+  color:#e50914;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 14px 25px;
-      margin: 5px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.hero p{
+  color:#bbb;
+  max-width:650px;
+  margin:auto;
+  line-height:1.6;
+  font-size:16px;
+}
 
-    .btn-red {
-      background: #d71920;
-      color: white;
-    }
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
 
-    .btn-dark {
-      border: 1px solid #d71920;
-      color: white;
-    }
+.login-box{
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:18px;
+  padding:28px 20px;
+  max-width:520px;
+  margin:10px auto 40px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
 
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+.login-title{
+  text-align:center;
+  font-size:24px;
+  margin-bottom:25px;
+}
 
-    section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.login-title span{
+  color:#e50914;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+label{
+  display:block;
+  margin:15px 0 7px;
+  color:#ddd;
+  font-weight:bold;
+}
 
-    .card {
-      background: #171717;
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid #333;
-      text-align: center;
-    }
+input{
+  width:100%;
+  padding:15px;
+  border-radius:8px;
+  border:1px solid #444;
+  background:#090909;
+  color:white;
+  font-size:16px;
+  outline:none;
+}
 
-    .card h3 {
-      color: #d71920;
-      margin-bottom: 12px;
-    }
+input:focus{
+  border-color:#e50914;
+}
 
-    .card p {
-      color: #ccc;
-      line-height: 1.5;
-    }
+.btn{
+  width:100%;
+  padding:15px;
+  margin-top:20px;
+  border:0;
+  border-radius:8px;
+  background:#e50914;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .login {
-      background: #111;
-      text-align: center;
-    }
+.btn:hover{
+  background:#ff1723;
+}
 
-    .login-box {
-      max-width: 450px;
-      margin: auto;
-      background: #191919;
-      padding: 30px;
-      border-radius: 12px;
-    }
+.forgot{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  color:#aaa;
+  text-decoration:none;
+  font-size:14px;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: none;
-    }
+.access-title{
+  text-align:center;
+  font-size:24px;
+  margin-bottom:20px;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 10px;
-      background: #d71920;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.access-title span{
+  color:#e50914;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #080808;
-      color: #777;
-    }
-  </style>
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#151515;
+  border:1px solid #333;
+  border-radius:14px;
+  padding:25px 18px;
+  text-align:center;
+  transition:.2s;
+}
+
+.card:hover{
+  border-color:#e50914;
+  transform:translateY(-2px);
+}
+
+.icon{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.card h3{
+  color:#e50914;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#aaa;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.card button{
+  margin-top:15px;
+  width:100%;
+  padding:11px;
+  border:1px solid #e50914;
+  border-radius:7px;
+  background:transparent;
+  color:white;
+  font-weight:bold;
+}
+
+.message{
+  text-align:center;
+  margin-top:15px;
+  color:#e50914;
+  min-height:20px;
+}
+
+footer{
+  margin-top:40px;
+  padding:25px;
+  text-align:center;
+  background:#050505;
+  border-top:1px solid #222;
+  color:#777;
+  font-size:13px;
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>RFTC</h1>
-  <p>Rodrigues Fight Training Center</p>
+
+  <div class="logo">RFTC</div>
+
+  <div class="subtitle">
+    Rodrigues Fight Training Center
+  </div>
+
 </header>
 
-<div class="hero">
-  <h2>Gestão inteligente para <span>academias de luta</span></h2>
+
+<section class="hero">
+
+  <h1>
+    Sistema de gestão para
+    <span>academias de luta</span>
+  </h1>
 
   <p>
-    Cadastre sua academia, gerencie alunos, controle pagamentos,
-    presença e organize sua equipe em um único sistema.
+    Gerencie sua academia, alunos, pagamentos,
+    presença e graduações em um único sistema.
   </p>
 
-  <div class="buttons">
-    <a href="#login" class="btn btn-red">ENTRAR NO SISTEMA</a>
-    <a href="#recursos" class="btn btn-dark">CONHECER O SISTEMA</a>
-  </div>
-</div>
-
-<section id="recursos">
-  <h2>Recursos do RFTC</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>🏢 Academia</h3>
-      <p>
-        Cadastre sua academia e tenha seu próprio ambiente de gestão.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>🥊 Alunos</h3>
-      <p>
-        Cadastre alunos, graduação, modalidade e informações de treinamento.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>💰 Pagamentos</h3>
-      <p>
-        Organize mensalidades, planos e controle financeiro dos alunos.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>✅ Check-in</h3>
-      <p>
-        Controle a presença dos alunos nos treinamentos.
-      </p>
-    </div>
-
-  </div>
 </section>
 
-<section>
-  <h2>Modalidades</h2>
 
-  <div class="cards">
-
-    <div class="card">
-      <h3>Muay Thai</h3>
-      <p>Gestão de alunos e graduação.</p>
-    </div>
-
-    <div class="card">
-      <h3>Boxe</h3>
-      <p>Organização da equipe e alunos.</p>
-    </div>
-
-    <div class="card">
-      <h3>Corrida</h3>
-      <p>Controle de alunos e treinamentos.</p>
-    </div>
-
-    <div class="card">
-      <h3>Outras lutas</h3>
-      <p>Estrutura preparada para diferentes modalidades.</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="login" class="login">
-
-  <h2>Acesso ao sistema</h2>
+<div class="container">
 
   <div class="login-box">
 
-    <input type="email" placeholder="E-mail">
+    <div class="login-title">
+      🔐 <span>Acesso</span> ao sistema
+    </div>
 
-    <input type="password" placeholder="Senha">
+    <label>E-mail</label>
 
-    <button onclick="entrar()">ENTRAR</button>
+    <input
+      id="email"
+      type="email"
+      placeholder="Digite seu e-mail"
+    >
 
-    <p id="mensagem" style="margin-top:15px;color:#aaa;"></p>
+    <label>Senha</label>
+
+    <input
+      id="senha"
+      type="password"
+      placeholder="Digite sua senha"
+    >
+
+    <button class="btn" onclick="entrar()">
+      ENTRAR NO SISTEMA
+    </button>
+
+    <a class="forgot" href="#">
+      Esqueci minha senha
+    </a>
+
+    <div id="mensagem" class="message"></div>
 
   </div>
 
-</section>
+
+  <h2 class="access-title">
+    Escolha seu <span>tipo de acesso</span>
+  </h2>
+
+
+  <div class="cards">
+
+    <div class="card">
+
+      <div class="icon">🏢</div>
+
+      <h3>ACADEMIA</h3>
+
+      <p>
+        Área exclusiva para proprietários
+        e gestores de academias.
+      </p>
+
+      <button onclick="tipoAcesso('Academia')">
+        ACESSAR ACADEMIA
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">🥊</div>
+
+      <h3>ALUNO</h3>
+
+      <p>
+        Acesse seus treinos, presença,
+        pagamentos e graduação.
+      </p>
+
+      <button onclick="tipoAcesso('Aluno')">
+        ACESSAR ÁREA DO ALUNO
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">👑</div>
+
+      <h3>ADMIN RFTC</h3>
+
+      <p>
+        Área administrativa para controle
+        geral da plataforma RFTC.
+      </p>
+
+      <button onclick="tipoAcesso('Administrador RFTC')">
+        ACESSAR ADMIN
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <footer>
-  <p>© 2026 RFTC - Rodrigues Fight Training Center</p>
-  <p style="margin-top:8px;">Sistema para gestão de academias de luta</p>
+
+  © 2026 RFTC - Rodrigues Fight Training Center
+
+  <br><br>
+
+  Sistema de gestão para academias de luta
+
 </footer>
 
+
 <script>
-  function entrar() {
-    document.getElementById("mensagem").innerText =
-      "Área de login em desenvolvimento. Estamos construindo o sistema RFTC.";
+
+function entrar(){
+
+  var email = document.getElementById("email").value;
+  var senha = document.getElementById("senha").value;
+  var mensagem = document.getElementById("mensagem");
+
+  if(email === "" || senha === ""){
+
+    mensagem.innerText =
+      "Preencha o e-mail e a senha.";
+
+    return;
   }
+
+  mensagem.innerText =
+    "Login selecionado. A autenticação real será conectada na próxima etapa.";
+
+}
+
+
+function tipoAcesso(tipo){
+
+  document.getElementById("mensagem").innerText =
+    "Acesso selecionado: " + tipo;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
 </script>
 
 </body>
