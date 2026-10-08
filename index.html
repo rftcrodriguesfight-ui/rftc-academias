@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RFTC Sistema</title>
+<title>RFTC Academias</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -12,372 +12,509 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  background:#0b0b0b;
-  color:#fff;
+  background:#f3f4f6;
+  color:#111827;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.tela{
+  display:none;
   min-height:100vh;
 }
 
-.container{
+.tela.ativa{
+  display:block;
+}
+
+/* LOGIN */
+.login-container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:#111827;
+}
+
+.login-box{
   width:100%;
-  max-width:500px;
-  margin:auto;
-  padding:25px 18px;
+  max-width:420px;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .logo{
   text-align:center;
-  margin:30px 0;
-}
-
-.logo h1{
-  font-size:32px;
-  letter-spacing:2px;
-}
-
-.logo span{
-  color:#d6a928;
-}
-
-.card{
-  background:#151515;
-  border:1px solid #292929;
-  border-radius:18px;
-  padding:25px;
-  box-shadow:0 10px 30px #000;
-}
-
-h2{
+  font-size:30px;
+  font-weight:bold;
   margin-bottom:8px;
 }
 
-.subtitle{
-  color:#aaa;
+.logo span{
+  color:#dc2626;
+}
+
+.subtitulo{
+  text-align:center;
+  color:#6b7280;
   margin-bottom:25px;
 }
 
 input,select{
   width:100%;
   padding:14px;
-  margin:8px 0;
+  border:1px solid #d1d5db;
   border-radius:10px;
-  border:1px solid #333;
-  background:#222;
-  color:white;
-  font-size:16px;
+  margin-top:7px;
+  margin-bottom:15px;
+  font-size:15px;
 }
 
-button{
+label{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.btn{
   width:100%;
   padding:14px;
-  margin-top:12px;
-  border:0;
   border-radius:10px;
-  background:#d6a928;
-  color:#000;
-  font-size:16px;
+  background:#dc2626;
+  color:white;
   font-weight:bold;
-  cursor:pointer;
+  font-size:16px;
+  margin-top:5px;
 }
 
-button.secondary{
-  background:#292929;
-  color:#fff;
+.btn:hover{
+  background:#b91c1c;
 }
 
-.message{
+.btn-sec{
+  background:#111827;
+  margin-top:10px;
+}
+
+.mensagem{
+  text-align:center;
   margin-top:15px;
-  padding:12px;
-  border-radius:8px;
-  display:none;
+  color:#dc2626;
+  font-weight:bold;
 }
 
-.success{
-  background:#123b21;
-  color:#75e69b;
-}
-
-.error{
-  background:#421919;
-  color:#ff8b8b;
-}
-
-.dashboard{
-  display:none;
-}
-
-.topbar{
+/* DASHBOARD */
+.topo{
+  background:#111827;
+  color:white;
+  padding:18px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:15px;
+}
+
+.topo h1{
+  font-size:22px;
+}
+
+.btn-sair{
+  background:#dc2626;
+  color:white;
+  padding:10px 15px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.conteudo{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px;
+}
+
+.boas-vindas{
+  margin-bottom:22px;
+}
+
+.boas-vindas h2{
+  margin-bottom:5px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:15px;
   margin-bottom:25px;
 }
 
-.topbar button{
-  width:auto;
-  margin:0;
-  padding:9px 14px;
+.card{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.grid{
+.card .icone{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  color:#6b7280;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.card .numero{
+  font-size:30px;
+  font-weight:bold;
+}
+
+.acoes{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:12px;
-  margin:20px 0;
+  margin-bottom:25px;
 }
 
-.box{
-  background:#171717;
-  border:1px solid #292929;
-  border-radius:14px;
+.acao{
+  background:#dc2626;
+  color:white;
+  padding:16px;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.secao{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.secao h2{
+  margin-bottom:18px;
+}
+
+.lista{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.aluno{
+  border:1px solid #e5e7eb;
+  padding:15px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.badge{
+  background:#dcfce7;
+  color:#166534;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  align-items:center;
+  justify-content:center;
   padding:20px;
+  z-index:10;
 }
 
-.box strong{
-  display:block;
-  font-size:28px;
-  color:#d6a928;
-  margin-top:8px;
+.modal.ativo{
+  display:flex;
 }
 
-.section{
-  margin-top:18px;
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:500px;
+  padding:25px;
+  border-radius:18px;
 }
 
-.hidden{
-  display:none!important;
+.fechar{
+  float:right;
+  background:#e5e7eb;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  font-size:18px;
 }
 
-.loading{
-  text-align:center;
-  padding:20px;
-  color:#aaa;
+@media(max-width:600px){
+  .topo{
+    padding:15px;
+  }
+
+  .topo h1{
+    font-size:18px;
+  }
+
+  .conteudo{
+    padding:18px 12px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- LOGIN -->
+<section id="login" class="tela ativa">
+  <div class="login-container">
+    <div class="login-box">
 
-  <!-- LOGIN -->
-  <div id="loginScreen">
+      <div class="logo">
+        RFTC <span>ACADEMIAS</span>
+      </div>
 
-    <div class="logo">
-      <h1>RFTC <span>SISTEMA</span></h1>
-      <p>Gestão para academias de lutas</p>
-    </div>
+      <div class="subtitulo">
+        Gestão para academias de lutas
+      </div>
 
-    <div class="card">
+      <label>E-mail</label>
+      <input id="loginEmail" type="email" placeholder="seu@email.com">
 
-      <h2>Entrar</h2>
-      <p class="subtitle">Acesse sua conta</p>
+      <label>Senha</label>
+      <input id="loginSenha" type="password" placeholder="Sua senha">
 
-      <input
-        id="loginEmail"
-        type="email"
-        placeholder="E-mail"
-      >
-
-      <input
-        id="loginPassword"
-        type="password"
-        placeholder="Senha"
-      >
-
-      <button onclick="login()">
+      <button class="btn" onclick="entrar()">
         ENTRAR
       </button>
 
-      <button
-        class="secondary"
-        onclick="showRegister()">
+      <button class="btn btn-sec" onclick="mostrarCadastro()">
         CRIAR CONTA
       </button>
 
-      <div id="loginMessage" class="message"></div>
+      <div id="mensagemLogin" class="mensagem"></div>
 
     </div>
   </div>
+</section>
 
 
-  <!-- CADASTRO -->
-  <div id="registerScreen" class="hidden">
+<!-- CADASTRO ACADEMIA -->
+<section id="cadastro" class="tela">
+  <div class="login-container">
+    <div class="login-box">
 
-    <div class="logo">
-      <h1>RFTC <span>SISTEMA</span></h1>
-      <p>Cadastre sua academia</p>
-    </div>
-
-    <div class="card">
-
-      <h2>Criar conta</h2>
-      <p class="subtitle">
-        Comece a utilizar o RFTC Sistema
-      </p>
-
-      <input
-        id="registerName"
-        type="text"
-        placeholder="Nome do responsável"
-      >
-
-      <input
-        id="registerEmail"
-        type="email"
-        placeholder="E-mail"
-      >
-
-      <input
-        id="registerPhone"
-        type="tel"
-        placeholder="Telefone / WhatsApp"
-      >
-
-      <input
-        id="registerPassword"
-        type="password"
-        placeholder="Senha"
-      >
-
-      <button onclick="register()">
-        CRIAR MINHA CONTA
-      </button>
-
-      <button
-        class="secondary"
-        onclick="showLogin()">
-        VOLTAR PARA LOGIN
-      </button>
-
-      <div id="registerMessage" class="message"></div>
-
-    </div>
-  </div>
-
-
-  <!-- DASHBOARD -->
-  <div id="dashboard" class="dashboard">
-
-    <div class="topbar">
-      <div>
-        <h2>RFTC Sistema</h2>
-        <p id="userEmail" class="subtitle"></p>
+      <div class="logo">
+        RFTC <span>ACADEMIAS</span>
       </div>
 
-      <button onclick="logout()">
-        Sair
-      </button>
-    </div>
-
-    <div class="card">
-
-      <h2>Dashboard</h2>
-      <p class="subtitle">
-        Gestão da sua academia
-      </p>
-
-      <div class="grid">
-
-        <div class="box">
-          Academias
-          <strong id="academyCount">0</strong>
-        </div>
-
-        <div class="box">
-          Alunos
-          <strong id="studentCount">0</strong>
-        </div>
-
-        <div class="box">
-          Pagamentos
-          <strong id="paymentCount">0</strong>
-        </div>
-
-        <div class="box">
-          Presenças
-          <strong id="attendanceCount">0</strong>
-        </div>
-
+      <div class="subtitulo">
+        Cadastro da academia
       </div>
 
-    </div>
+      <label>Nome da academia</label>
+      <input id="nomeAcademia" placeholder="Ex: RFTC Rodrigues Fight">
 
+      <label>Responsável</label>
+      <input id="responsavel" placeholder="Nome do responsável">
 
-    <!-- CADASTRO ACADEMIA -->
+      <label>Telefone</label>
+      <input id="telefone" placeholder="(51) 99999-9999">
 
-    <div class="card section">
+      <label>Cidade</label>
+      <input id="cidade" placeholder="Cidade">
 
-      <h2>🏢 Minha Academia</h2>
+      <label>E-mail</label>
+      <input id="cadEmail" type="email" placeholder="seu@email.com">
 
-      <input
-        id="academyName"
-        type="text"
-        placeholder="Nome da academia"
-      >
+      <label>Senha</label>
+      <input id="cadSenha" type="password" placeholder="Crie uma senha">
 
-      <input
-        id="academyPhone"
-        type="tel"
-        placeholder="Telefone"
-      >
-
-      <input
-        id="academyCity"
-        type="text"
-        placeholder="Cidade"
-      >
-
-      <button onclick="createAcademy()">
+      <button class="btn" onclick="cadastrar()">
         CADASTRAR ACADEMIA
       </button>
 
-      <div id="academyMessage" class="message"></div>
-
-    </div>
-
-
-    <!-- ALUNO -->
-
-    <div class="card section">
-
-      <h2>👨‍🎓 Novo aluno</h2>
-
-      <input
-        id="studentName"
-        type="text"
-        placeholder="Nome do aluno"
-      >
-
-      <input
-        id="studentEmail"
-        type="email"
-        placeholder="E-mail"
-      >
-
-      <input
-        id="studentPhone"
-        type="tel"
-        placeholder="Telefone"
-      >
-
-      <select id="studentModality">
-        <option value="Muay Thai">Muay Thai</option>
-        <option value="Boxe">Boxe</option>
-        <option value="Corrida">Corrida</option>
-        <option value="Musculação">Musculação</option>
-      </select>
-
-      <button onclick="createStudent()">
-        CADASTRAR ALUNO
+      <button class="btn btn-sec" onclick="mostrarLogin()">
+        VOLTAR PARA LOGIN
       </button>
 
-      <div id="studentMessage" class="message"></div>
+      <div id="mensagemCadastro" class="mensagem"></div>
 
     </div>
+  </div>
+</section>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="tela">
+
+  <header class="topo">
+
+    <h1>🥊 RFTC Academias</h1>
+
+    <button class="btn-sair" onclick="sair()">
+      Sair
+    </button>
+
+  </header>
+
+  <main class="conteudo">
+
+    <div class="boas-vindas">
+      <h2 id="nomeAcademiaDashboard">
+        Minha Academia
+      </h2>
+
+      <p>
+        Painel de gestão da academia
+      </p>
+    </div>
+
+
+    <!-- CARDS -->
+    <div class="cards">
+
+      <div class="card">
+        <div class="icone">👥</div>
+        <h3>ALUNOS</h3>
+        <div id="totalAlunos" class="numero">0</div>
+      </div>
+
+      <div class="card">
+        <div class="icone">💰</div>
+        <h3>PAGAMENTOS</h3>
+        <div id="totalPagamentos" class="numero">0</div>
+      </div>
+
+      <div class="card">
+        <div class="icone">✅</div>
+        <h3>PRESENÇAS</h3>
+        <div id="totalPresencas" class="numero">0</div>
+      </div>
+
+      <div class="card">
+        <div class="icone">🥋</div>
+        <h3>MODALIDADES</h3>
+        <div id="totalModalidades" class="numero">0</div>
+      </div>
+
+    </div>
+
+
+    <!-- AÇÕES -->
+    <div class="acoes">
+
+      <button class="acao" onclick="abrirModalAluno()">
+        ➕ Cadastrar aluno
+      </button>
+
+      <button class="acao" onclick="carregarDashboard()">
+        🔄 Atualizar
+      </button>
+
+      <button class="acao" onclick="mostrarAlunos()">
+        👥 Ver alunos
+      </button>
+
+      <button class="acao" onclick="registrarPresenca()">
+        ✅ Registrar check-in
+      </button>
+
+    </div>
+
+
+    <!-- ALUNOS -->
+    <div class="secao">
+
+      <h2>👥 Alunos cadastrados</h2>
+
+      <div id="listaAlunos" class="lista">
+        Carregando...
+      </div>
+
+    </div>
+
+
+    <!-- INFORMAÇÕES -->
+    <div class="secao">
+
+      <h2>📊 Resumo</h2>
+
+      <p>
+        Sistema RFTC Academias em desenvolvimento.
+      </p>
+
+      <br>
+
+      <p>
+        Em breve teremos financeiro, planos,
+        graduação, horários, check-in e muito mais.
+      </p>
+
+    </div>
+
+  </main>
+
+</section>
+
+
+<!-- MODAL ALUNO -->
+<div id="modalAluno" class="modal">
+
+  <div class="modal-box">
+
+    <button class="fechar" onclick="fecharModalAluno()">
+      ×
+    </button>
+
+    <h2>➕ Novo aluno</h2>
+
+    <br>
+
+    <label>Nome completo</label>
+    <input id="alunoNome" placeholder="Nome do aluno">
+
+    <label>E-mail</label>
+    <input id="alunoEmail" type="email" placeholder="E-mail">
+
+    <label>Telefone</label>
+    <input id="alunoTelefone" placeholder="Telefone">
+
+    <label>Modalidade</label>
+
+    <select id="alunoModalidade">
+      <option value="Muay Thai">Muay Thai</option>
+      <option value="Boxe">Boxe</option>
+      <option value="Jiu-Jitsu">Jiu-Jitsu</option>
+      <option value="MMA">MMA</option>
+      <option value="Kickboxing">Kickboxing</option>
+      <option value="Corrida">Corrida</option>
+      <option value="Musculação">Musculação</option>
+    </select>
+
+    <button class="btn" onclick="cadastrarAluno()">
+      SALVAR ALUNO
+    </button>
+
+    <div id="mensagemAluno" class="mensagem"></div>
 
   </div>
 
@@ -386,15 +523,15 @@ button.secondary{
 
 <script>
 
-/* =========================
+/* ================================
    SUPABASE
-========================= */
+================================ */
 
 const SUPABASE_URL =
 "https://wperzljwgnejroxkxsqe.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_KoIUQVsRmBtac22TWarIfQ_YC3mY-cV";
+"COLE_SUA_CHAVE_PUBLICAVEL_AQUI";
 
 const supabaseClient =
 supabase.createClient(
@@ -403,359 +540,466 @@ supabase.createClient(
 );
 
 
-/* =========================
-   TELAS
-========================= */
+/* ================================
+   NAVEGAÇÃO
+================================ */
 
-function showRegister(){
+function mostrarLogin(){
 
-  document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("registerScreen")
-    .classList.remove("hidden");
-
-}
-
-function showLogin(){
+  document.querySelectorAll(".tela")
+    .forEach(t => t.classList.remove("ativa"));
 
   document
-    .getElementById("registerScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("loginScreen")
-    .classList.remove("hidden");
-
+    .getElementById("login")
+    .classList.add("ativa");
 }
 
 
-/* =========================
-   MENSAGEM
-========================= */
+function mostrarCadastro(){
 
-function message(id,text,type){
+  document.querySelectorAll(".tela")
+    .forEach(t => t.classList.remove("ativa"));
 
-  const el =
-    document.getElementById(id);
-
-  el.innerText = text;
-
-  el.className =
-    "message " + type;
-
-  el.style.display = "block";
+  document
+    .getElementById("cadastro")
+    .classList.add("ativa");
 }
 
 
-/* =========================
+/* ================================
    CADASTRO
-========================= */
+================================ */
 
-async function register(){
+async function cadastrar(){
 
   const nome =
-    document.getElementById("registerName").value.trim();
+    document.getElementById("nomeAcademia").value.trim();
 
-  const email =
-    document.getElementById("registerEmail").value.trim();
+  const responsavel =
+    document.getElementById("responsavel").value.trim();
 
   const telefone =
-    document.getElementById("registerPhone").value.trim();
+    document.getElementById("telefone").value.trim();
 
-  const senha =
-    document.getElementById("registerPassword").value;
-
-  if(!nome || !email || !senha){
-
-    message(
-      "registerMessage",
-      "Preencha nome, e-mail e senha.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {data,error} =
-    await supabaseClient.auth.signUp({
-
-      email:email,
-
-      password:senha,
-
-      options:{
-        data:{
-          nome:nome,
-          telefone:telefone
-        }
-      }
-
-    });
-
-  if(error){
-
-    message(
-      "registerMessage",
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  message(
-    "registerMessage",
-    "Conta criada! Verifique seu e-mail se a confirmação estiver ativada.",
-    "success"
-  );
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-async function login(){
+  const cidade =
+    document.getElementById("cidade").value.trim();
 
   const email =
-    document.getElementById("loginEmail").value.trim();
+    document.getElementById("cadEmail").value.trim();
 
-  const password =
-    document.getElementById("loginPassword").value;
+  const senha =
+    document.getElementById("cadSenha").value;
 
-  if(!email || !password){
+  const msg =
+    document.getElementById("mensagemCadastro");
 
-    message(
-      "loginMessage",
-      "Preencha o e-mail e a senha.",
-      "error"
-    );
+
+  if(!nome || !responsavel || !email || !senha){
+
+    msg.textContent =
+      "Preencha os campos obrigatórios.";
 
     return;
   }
 
-  const {data,error} =
-    await supabaseClient.auth.signInWithPassword({
 
+  msg.textContent =
+    "Cadastrando...";
+
+
+  const { data, error } =
+    await supabaseClient.auth.signUp({
       email:email,
-      password:password
-
+      password:senha
     });
+
 
   if(error){
 
-    message(
-      "loginMessage",
-      error.message,
-      "error"
-    );
+    msg.textContent =
+      error.message;
 
     return;
   }
 
-  openDashboard(data.user);
 
-}
-
-
-/* =========================
-   DASHBOARD
-========================= */
-
-async function openDashboard(user){
-
-  document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("registerScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("dashboard")
-    .style.display = "block";
-
-  document
-    .getElementById("userEmail")
-    .innerText = user.email;
-
-  await loadDashboard();
-
-}
+  const user =
+    data.user;
 
 
-/* =========================
-   DASHBOARD DADOS
-========================= */
+  if(!user){
 
-async function loadDashboard(){
-
-  const academy =
-    await supabaseClient
-      .from("academias")
-      .select("*");
-
-  const students =
-    await supabaseClient
-      .from("alunos")
-      .select("*");
-
-  const payments =
-    await supabaseClient
-      .from("pagamentos")
-      .select("*");
-
-  const attendance =
-    await supabaseClient
-      .from("presencas")
-      .select("*");
-
-  document
-    .getElementById("academyCount")
-    .innerText =
-      academy.data?.length || 0;
-
-  document
-    .getElementById("studentCount")
-    .innerText =
-      students.data?.length || 0;
-
-  document
-    .getElementById("paymentCount")
-    .innerText =
-      payments.data?.length || 0;
-
-  document
-    .getElementById("attendanceCount")
-    .innerText =
-      attendance.data?.length || 0;
-
-}
-
-
-/* =========================
-   ACADEMIA
-========================= */
-
-async function createAcademy(){
-
-  const name =
-    document.getElementById("academyName").value.trim();
-
-  const phone =
-    document.getElementById("academyPhone").value.trim();
-
-  const city =
-    document.getElementById("academyCity").value.trim();
-
-  if(!name){
-
-    message(
-      "academyMessage",
-      "Informe o nome da academia.",
-      "error"
-    );
+    msg.textContent =
+      "Conta criada. Verifique seu e-mail.";
 
     return;
   }
 
-  const {
-    data:{user}
-  } =
-    await supabaseClient.auth.getUser();
 
-  const {error} =
+  const { error:erroAcademia } =
     await supabaseClient
       .from("academias")
       .insert({
 
-        nome:name,
-        telefone:phone,
-        cidade:city,
+        nome:nome,
+        telefone:telefone,
+        cidade:cidade,
         responsavel_id:user.id
 
       });
 
-  if(error){
 
-    message(
-      "academyMessage",
-      error.message,
-      "error"
-    );
+  if(erroAcademia){
+
+    msg.textContent =
+      erroAcademia.message;
 
     return;
   }
 
-  message(
-    "academyMessage",
-    "Academia cadastrada com sucesso!",
-    "success"
-  );
 
-  loadDashboard();
+  msg.style.color = "green";
+
+  msg.textContent =
+    "Academia cadastrada com sucesso!";
+
+
+  setTimeout(() => {
+
+    mostrarLogin();
+
+  },1500);
 
 }
 
 
-/* =========================
-   ALUNO
-========================= */
+/* ================================
+   LOGIN
+================================ */
 
-async function createStudent(){
-
-  const nome =
-    document.getElementById("studentName").value.trim();
+async function entrar(){
 
   const email =
-    document.getElementById("studentEmail").value.trim();
+    document.getElementById("loginEmail").value.trim();
+
+  const senha =
+    document.getElementById("loginSenha").value;
+
+  const msg =
+    document.getElementById("mensagemLogin");
+
+
+  if(!email || !senha){
+
+    msg.textContent =
+      "Digite seu e-mail e senha.";
+
+    return;
+  }
+
+
+  msg.textContent =
+    "Entrando...";
+
+
+  const { error } =
+    await supabaseClient.auth.signInWithPassword({
+
+      email:email,
+      password:senha
+
+    });
+
+
+  if(error){
+
+    msg.textContent =
+      error.message;
+
+    return;
+  }
+
+
+  await abrirDashboard();
+
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
+async function abrirDashboard(){
+
+  document.querySelectorAll(".tela")
+    .forEach(t => t.classList.remove("ativa"));
+
+  document
+    .getElementById("dashboard")
+    .classList.add("ativa");
+
+
+  await carregarDashboard();
+
+}
+
+
+async function carregarDashboard(){
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(!user){
+
+    mostrarLogin();
+
+    return;
+  }
+
+
+  /* ACADEMIA */
+
+  const {
+    data:academia
+  } =
+    await supabaseClient
+      .from("academias")
+      .select("*")
+      .eq("responsavel_id",user.id)
+      .maybeSingle();
+
+
+  if(academia){
+
+    document
+      .getElementById("nomeAcademiaDashboard")
+      .textContent =
+      academia.nome || "Minha Academia";
+
+  }
+
+
+  /* ALUNOS */
+
+  const {
+    data:alunos,
+    error:erroAlunos
+  } =
+    await supabaseClient
+      .from("alunos")
+      .select("*")
+      .eq("academia_id",academia?.id)
+      .order("created_at",{ascending:false});
+
+
+  if(!erroAlunos && alunos){
+
+    document
+      .getElementById("totalAlunos")
+      .textContent =
+      alunos.length;
+
+
+    mostrarListaAlunos(alunos);
+
+  }
+
+
+  /* PAGAMENTOS */
+
+  if(academia?.id){
+
+    const {
+      data:pagamentos
+    } =
+      await supabaseClient
+        .from("pagamentos")
+        .select("id")
+        .eq("academia_id",academia.id);
+
+
+    document
+      .getElementById("totalPagamentos")
+      .textContent =
+      pagamentos?.length || 0;
+
+
+    /* PRESENÇAS */
+
+    const {
+      data:presencas
+    } =
+      await supabaseClient
+        .from("presencas")
+        .select("id")
+        .eq("academia_id",academia.id);
+
+
+    document
+      .getElementById("totalPresencas")
+      .textContent =
+      presencas?.length || 0;
+
+  }
+
+
+  /* MODALIDADES */
+
+  document
+    .getElementById("totalModalidades")
+    .textContent = "7";
+
+}
+
+
+/* ================================
+   LISTA ALUNOS
+================================ */
+
+function mostrarListaAlunos(alunos){
+
+  const lista =
+    document.getElementById("listaAlunos");
+
+
+  if(!alunos.length){
+
+    lista.innerHTML =
+      "<p>Nenhum aluno cadastrado ainda.</p>";
+
+    return;
+  }
+
+
+  lista.innerHTML =
+    alunos.map(aluno => `
+
+      <div class="aluno">
+
+        <div>
+
+          <strong>
+            ${aluno.nome || "Sem nome"}
+          </strong>
+
+          <br>
+
+          <small>
+            ${aluno.modalidade || "Modalidade não informada"}
+          </small>
+
+        </div>
+
+        <span class="badge">
+          Ativo
+        </span>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* ================================
+   CADASTRO DE ALUNO
+================================ */
+
+function abrirModalAluno(){
+
+  document
+    .getElementById("modalAluno")
+    .classList.add("ativo");
+
+}
+
+
+function fecharModalAluno(){
+
+  document
+    .getElementById("modalAluno")
+    .classList.remove("ativo");
+
+}
+
+
+async function cadastrarAluno(){
+
+  const nome =
+    document.getElementById("alunoNome").value.trim();
+
+  const email =
+    document.getElementById("alunoEmail").value.trim();
 
   const telefone =
-    document.getElementById("studentPhone").value.trim();
+    document.getElementById("alunoTelefone").value.trim();
 
   const modalidade =
-    document.getElementById("studentModality").value;
+    document.getElementById("alunoModalidade").value;
+
+  const msg =
+    document.getElementById("mensagemAluno");
+
 
   if(!nome){
 
-    message(
-      "studentMessage",
-      "Informe o nome do aluno.",
-      "error"
-    );
+    msg.textContent =
+      "Digite o nome do aluno.";
 
     return;
   }
 
-  const academy =
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(!user){
+
+    msg.textContent =
+      "Sua sessão expirou.";
+
+    return;
+  }
+
+
+  const {
+    data:academia,
+    error:erroAcademia
+  } =
     await supabaseClient
       .from("academias")
       .select("id")
-      .limit(1)
-      .single();
+      .eq("responsavel_id",user.id)
+      .maybeSingle();
 
-  if(academy.error){
 
-    message(
-      "studentMessage",
-      "Cadastre uma academia primeiro.",
-      "error"
-    );
+  if(erroAcademia || !academia){
+
+    msg.textContent =
+      "Academia não encontrada.";
 
     return;
   }
 
-  const {error} =
+
+  const {
+    error
+  } =
     await supabaseClient
       .from("alunos")
       .insert({
 
-        academia_id:academy.data.id,
+        academia_id:academia.id,
         nome:nome,
         email:email,
         telefone:telefone,
@@ -763,82 +1007,120 @@ async function createStudent(){
 
       });
 
+
   if(error){
 
-    message(
-      "studentMessage",
-      error.message,
-      "error"
-    );
+    msg.textContent =
+      error.message;
 
     return;
   }
 
-  message(
-    "studentMessage",
-    "Aluno cadastrado com sucesso!",
-    "success"
-  );
+
+  msg.style.color =
+    "green";
+
+  msg.textContent =
+    "Aluno cadastrado com sucesso!";
+
 
   document
-    .getElementById("studentName")
+    .getElementById("alunoNome")
     .value = "";
 
   document
-    .getElementById("studentEmail")
+    .getElementById("alunoEmail")
     .value = "";
 
   document
-    .getElementById("studentPhone")
+    .getElementById("alunoTelefone")
     .value = "";
 
-  loadDashboard();
+
+  setTimeout(async () => {
+
+    fecharModalAluno();
+
+    msg.textContent = "";
+
+    msg.style.color = "#dc2626";
+
+    await carregarDashboard();
+
+  },1000);
 
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* ================================
+   VER ALUNOS
+================================ */
 
-async function logout(){
+async function mostrarAlunos(){
+
+  document
+    .getElementById("listaAlunos")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* ================================
+   CHECK-IN
+================================ */
+
+async function registrarPresenca(){
+
+  alert(
+    "A próxima etapa será o sistema completo de check-in dos alunos."
+  );
+
+}
+
+
+/* ================================
+   SAIR
+================================ */
+
+async function sair(){
 
   await supabaseClient.auth.signOut();
 
-  document
-    .getElementById("dashboard")
-    .style.display = "none";
-
-  showLogin();
+  mostrarLogin();
 
 }
 
 
-/* =========================
+/* ================================
    VERIFICAR SESSÃO
-========================= */
+================================ */
 
-async function checkSession(){
+async function verificarSessao(){
 
   const {
-    data:{session}
+    data:{
+      session
+    }
   } =
     await supabaseClient.auth.getSession();
 
+
   if(session){
 
-    openDashboard(session.user);
+    await abrirDashboard();
+
+  }else{
+
+    mostrarLogin();
 
   }
 
 }
 
 
-/* =========================
-   INICIAR
-========================= */
-
-checkSession();
+verificarSessao();
 
 </script>
 
