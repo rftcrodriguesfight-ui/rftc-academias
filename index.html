@@ -1398,3 +1398,221 @@ async function cadastrarAluno(){
       .eq(
         "responsavel_id",
         user
+      .maybeSingle();
+
+  if(erroAcademia || !academia){
+
+    msg.style.color = "#dc2626";
+
+    msg.textContent =
+      "Academia não encontrada.";
+
+    return;
+  }
+
+
+  /* =====================================
+     VERIFICA DUPLICADO
+  ===================================== */
+
+  const {
+    data:existentes,
+    error:erroBusca
+  } =
+    await supabaseClient
+      .from("alunos")
+      .select("id,nome,email,modalidade")
+      .eq(
+        "academia_id",
+        academia.id
+      );
+
+
+  if(!erroBusca && existentes?.length){
+
+    const nomeJaExiste =
+      existentes.some(
+        aluno =>
+          String(aluno.nome || "")
+            .trim()
+            .toLowerCase()
+          ===
+          nome
+            .trim()
+            .toLowerCase()
+      );
+
+
+    if(nomeJaExiste){
+
+      msg.style.color = "#dc2626";
+
+      msg.textContent =
+        "Este aluno já está cadastrado.";
+
+      return;
+    }
+  }
+
+
+  /* =====================================
+     SALVAR ALUNO
+  ===================================== */
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("alunos")
+      .insert({
+
+        academia_id:
+          academia.id,
+
+        nome:
+          nome,
+
+        email:
+          email,
+
+        telefone:
+          telefone,
+
+        modalidade:
+          modalidade
+
+      });
+
+
+  if(error){
+
+    console.error(error);
+
+    msg.style.color = "#dc2626";
+
+    msg.textContent =
+      error.message;
+
+    return;
+  }
+
+
+  msg.style.color = "#15803d";
+
+  msg.textContent =
+    "Aluno cadastrado com sucesso!";
+
+
+  document
+    .getElementById("alunoNome")
+    .value = "";
+
+  document
+    .getElementById("alunoEmail")
+    .value = "";
+
+  document
+    .getElementById("alunoTelefone")
+    .value = "";
+
+
+  setTimeout(
+    async () => {
+
+      fecharModalAluno();
+
+      msg.textContent = "";
+
+      msg.style.color = "#dc2626";
+
+      await carregarDashboard();
+
+    },
+    1000
+  );
+
+}
+
+
+/* =====================================
+   VER ALUNOS
+===================================== */
+
+function mostrarAlunos(){
+
+  document
+    .getElementById("listaAlunos")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   CHECK-IN
+===================================== */
+
+function registrarPresenca(){
+
+  alert(
+    "O sistema completo de check-in será ativado na próxima etapa."
+  );
+
+}
+
+
+/* =====================================
+   SAIR
+===================================== */
+
+async function sair(){
+
+  await supabaseClient
+    .auth
+    .signOut();
+
+  mostrarLogin();
+
+}
+
+
+/* =====================================
+   VERIFICAR SESSÃO
+===================================== */
+
+async function verificarSessao(){
+
+  const {
+    data:{
+      session
+    }
+  } =
+    await supabaseClient
+      .auth
+      .getSession();
+
+
+  if(session){
+
+    await abrirDashboard();
+
+  }else{
+
+    mostrarLogin();
+
+  }
+
+}
+
+
+/* =====================================
+   INICIAR
+===================================== */
+
+verificarSessao();
+
+</script>
+
+</body>
+</html>
